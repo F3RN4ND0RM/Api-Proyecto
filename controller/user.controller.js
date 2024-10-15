@@ -177,7 +177,7 @@ exports.updateRol = async (req, res) => {
         if (!user)
             return res.state(400).json({msg: "Algo salió mal"})
         
-        return res.status(200).json({msg: req.body.id})
+        return res.status(200).json({msg: `Se actualizo con exito el usuario ${user.name}`})
     }catch(error){
         console.log(error)
         return res.status(400).json({msg: error})
