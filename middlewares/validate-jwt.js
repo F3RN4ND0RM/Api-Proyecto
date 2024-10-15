@@ -11,20 +11,20 @@ const validateToken = async (req,res,next) =>{
             return res.status(400).json({msg: "Not authenticated"});
 
         jwt.verify(token, process.env.SECRET, async  (err, user) => {
+            
             if(err)
                 return res.status(400).json({msg: "invalid authentication"})
 
+            usuario = await User.findByPk(user.id, {
+                attributes : ['id', 'rol']
+            })
 
-                usuario = await User.findOne({where: {
-                    id : user.id
-                }})
 
-
-                if(!usuario )
-                    return res.status(400).json({msg: "Usuario no autorizado"})
-
-                req.body.user = usuario
-                next()
+            if(!usuario )
+                return res.status(400).json({msg: "Usuario no autorizado"})
+            
+            req.body.user = usuario
+            next()
         })
 
     }catch(error){

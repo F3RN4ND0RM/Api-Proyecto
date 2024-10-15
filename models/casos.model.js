@@ -2,17 +2,21 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../db/db');
 
 
-const Citas = sequelize.define('Citas', {
+const Casos = sequelize.define('Casos', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        fecha : {
+        nombre : {
             type : DataTypes.STRING,
             allowNull : false,
         },
-        hora : {
+        descripcion : {
+            type : DataTypes.STRING,
+            allowNull : false,
+        },
+        tipo : {
             type : DataTypes.STRING,
             allowNull : false,
         },
@@ -25,14 +29,19 @@ const Citas = sequelize.define('Citas', {
             type : DataTypes.INTEGER,
             allowNull : false,
         },
-        
         status : {
             type : DataTypes.INTEGER
         },
+        juzgado : {
+            type : DataTypes.STRING
+        },
+        observaciones : {
+            type : DataTypes.STRING
+        }
     },{    
-        tableName: 'citas', 
+        tableName: 'casos', 
     },
 )
 
 
-module.exports=Citas
+module.exports=Casos

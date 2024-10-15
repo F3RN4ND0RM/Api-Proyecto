@@ -2,7 +2,7 @@ const { user } = require('pg/lib/defaults')
 const User = require('../models/user.model')
 
 
-const validateCitas = async (req , res,  next ) => {
+const validateCasos = async (req , res,  next ) => {
 
     try{
         
@@ -22,8 +22,6 @@ const validateCitas = async (req , res,  next ) => {
             return res.status(400).json({msg : "abogado invalido"}) 
 
         req.body.id_abogado = id_abogado
-
-        delete req.body.user;
         next()
 
     }catch(error){
@@ -32,5 +30,5 @@ const validateCitas = async (req , res,  next ) => {
 }
 
 module.exports = {
-    validateCitas
+    validateCasos
 }
