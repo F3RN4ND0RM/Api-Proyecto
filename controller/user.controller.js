@@ -11,7 +11,7 @@ exports.getUsers = async (req, res) => {
     try{
 
         const users = await User.findAll({
-            attributes: ['name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone', 'rol'],
+            attributes: ['id', 'name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone', 'rol'],
         })
 
 
