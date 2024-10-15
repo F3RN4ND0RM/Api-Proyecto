@@ -34,7 +34,7 @@ exports.getUserByID = async (req, res) => {
         let id = req.body.user.id
 
         let user = await User.findOne({            
-            attributes: ['name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone'],            
+            attributes: ['id','name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone'],            
         },{
             where :{
                 id
