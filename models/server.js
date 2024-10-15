@@ -5,6 +5,7 @@ const db = require('../db/db')
 const express = require('express');
 const cors = require('cors');
 const userRoutes = require('../routes/user.routes')
+const citasRoutes = require('../routes/citas.routes')
 
 
 class Server {
@@ -32,7 +33,8 @@ class Server {
     }
 
     routes() {
-        this.app.use("/api", userRoutes )
+        this.app.use("/api", userRoutes )        
+        this.app.use("/api",  citasRoutes)
     }
 
 
