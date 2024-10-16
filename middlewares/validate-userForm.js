@@ -5,9 +5,9 @@ import User from "../models/user.model.js"
 export  const validateEmail = async (req , res,  next ) => {
 
 
-    email = req.body.email
+    let email = req.body.email
 
-    user = await User.findAll({
+    let user = await User.findAll({
         where:{
             email:email
         }
@@ -23,7 +23,7 @@ export  const validateEmail = async (req , res,  next ) => {
 export const validateAUP = async (req , res,  next ) => {
 
 
-    AUP = req.body.AUP
+    let AUP = req.body.AUP
 
     if (!AUP)
         return res.status(404).json({"msg" : "Debes aceptar terminos y condiciones"})
