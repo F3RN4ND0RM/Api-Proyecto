@@ -8,12 +8,12 @@ export const getUsers = async (req, res) => {
     try{
 
         const users = await User.findAll({
-            attributes: ['id', 'name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone', 'rol'],
+            attributes: ['id', 'name', 'surname', 'rol'],
         })
 
 
         return users
-            ? res.status(200).json({users : users})
+            ? res.status(200).json(users)
             : res.status(404).json({msg : "Sin resultados"})
 
 
