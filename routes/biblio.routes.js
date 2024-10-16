@@ -4,6 +4,6 @@ import { getDocumentos } from '../controller/biblio.controller.js';
 
 const router = express.Router();
 
-router.get('/biblioteca', getDocumentos);
+router.get('/biblioteca/:busqueda', getDocumentos);
 
 export default router;
