@@ -112,27 +112,20 @@ export const updateUser = async (req, res) => {
 
     try{
 
-        let {name, surname, email, password, address, neighborhood, city, state, cp, gender, phone} = req.body
+        let {name, surname, email, address, city} = req.body
 
         let id = req.body.user.id
         let user = await User.findByPk(id)
 
-        const salt = await bcrypt.genSalt(10);
-        password = await bcrypt.hash(password, salt);
+
 
 
         user = await User.update(
             { name: name,
             surname : surname,
-            email : email,
-            password : password,
+            email : email,            
             address : address,
-            neighborhood : neighborhood,
             city : city, 
-            state : state, 
-            cp : cp,
-            gender :gender, 
-            phone : phone,
         },{
                 where: {
                     id : id
