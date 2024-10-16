@@ -95,7 +95,9 @@ export const loginUser = async (req, res) => {
         }, process.env.SECRET, {expiresIn: "1h"})
         
 
-        return res.status(200).json({token : token})
+        return res.status(200).json({
+            rol: user.rol
+            ,token : token})
 
 
     }catch(error){
