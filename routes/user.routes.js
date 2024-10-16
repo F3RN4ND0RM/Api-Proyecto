@@ -28,7 +28,6 @@ router.put('/updateuser', [
     check('name', 'Name can not be empty').notEmpty(),
     check('surname', 'surname can not be empty').notEmpty(),
     check('email', 'email can not be empty').isEmail(),
-    check('password', 'password can not be empty').notEmpty(),
     check('address', 'address can not be empty').notEmpty(),
     check('city', 'city can not be empty').notEmpty(),  
     validateToken,
