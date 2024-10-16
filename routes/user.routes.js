@@ -30,11 +30,7 @@ router.put('/updateuser', [
     check('email', 'email can not be empty').isEmail(),
     check('password', 'password can not be empty').notEmpty(),
     check('address', 'address can not be empty').notEmpty(),
-    check('neighborhood', 'neighborhood can not be empty').notEmpty(),
-    check('city', 'city can not be empty').notEmpty(),
-    check('state', 'state can not be empty').notEmpty(),
-    check('cp', 'cp can not be empty').notEmpty(),
-    check('phone', 'phone can not be empty').isMobilePhone(),    
+    check('city', 'city can not be empty').notEmpty(),  
     validateToken,
     validateForm,  
 ], updateUser)
