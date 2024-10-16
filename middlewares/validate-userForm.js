@@ -1,8 +1,8 @@
+import User from "../models/user.model.js"
 
-const User = require('../models/user.model')
 
 
-const validateEmail = async (req , res,  next ) => {
+export  const validateEmail = async (req , res,  next ) => {
 
 
     email = req.body.email
@@ -20,7 +20,7 @@ const validateEmail = async (req , res,  next ) => {
 }
 
 
-const validateAUP = async (req , res,  next ) => {
+export const validateAUP = async (req , res,  next ) => {
 
 
     AUP = req.body.AUP
@@ -30,7 +30,5 @@ const validateAUP = async (req , res,  next ) => {
 
     next();
 }
-module.exports = {
-    validateEmail,
-    validateAUP
-}
+
+

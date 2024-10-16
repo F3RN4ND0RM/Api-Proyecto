@@ -1,8 +1,8 @@
-const { user } = require('pg/lib/defaults')
-const User = require('../models/user.model')
+import User from '../models/user.model.js';
 
 
-const validateCitas = async (req , res,  next ) => {
+
+export const validateCitas = async (req , res,  next ) => {
 
     try{
         
@@ -29,8 +29,4 @@ const validateCitas = async (req , res,  next ) => {
     }catch(error){
         return res.status(400).json("Algo salio mal")
     }
-}
-
-module.exports = {
-    validateCitas
 }

@@ -1,8 +1,8 @@
+import jwt from 'jsonwebtoken';
+import User from '../models/user.model.js';
 
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model")
 
-const validateToken = async (req,res,next) =>{
+export  const validateToken = async (req,res,next) =>{
     
     try{
         const token = req.headers.authtoken;
@@ -15,7 +15,7 @@ const validateToken = async (req,res,next) =>{
             if(err)
                 return res.status(400).json({msg: "invalid authentication"})
 
-            usuario = await User.findByPk(user.id, {
+            let usuario = await User.findByPk(user.id, {
                 attributes : ['id', 'rol']
             })
 
@@ -36,4 +36,3 @@ const validateToken = async (req,res,next) =>{
 }
 
 
-module.exports = { validateToken };

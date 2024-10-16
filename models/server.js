@@ -1,12 +1,13 @@
-require('dotenv').config();
+import 'dotenv/config';
 
+import db from '../db/db.js';
+import express from 'express';
+import cors from 'cors';
+import userRoutes from '../routes/user.routes.js';
+import citasRoutes from '../routes/citas.routes.js';
+import casosRoutes from '../routes/casos.routes.js';
+import biblioRoutes from '../routes/biblio.routes.js';
 
-const db = require('../db/db')
-const express = require('express');
-const cors = require('cors');
-const userRoutes = require('../routes/user.routes')
-const citasRoutes = require('../routes/citas.routes')
-const casosRoutes = require('../routes/casos.routes')
 
 
 class Server {
@@ -34,7 +35,7 @@ class Server {
     }
 
     routes() {
-        this.app.use("/api", [userRoutes,citasRoutes, casosRoutes] )        
+        this.app.use("/api", [userRoutes,citasRoutes, casosRoutes, biblioRoutes] )        
         
     }
 
@@ -59,4 +60,4 @@ class Server {
 
 }
 
-module.exports = Server;
+export default Server;

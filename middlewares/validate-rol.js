@@ -1,9 +1,8 @@
 
-const { user } = require('pg/lib/defaults')
-const User = require('../models/user.model')
+import User from '../models/user.model.js';
 
 
-const validateRol = async (req , res,  next ) => {
+export  const validateRol = async (req , res,  next ) => {
 
 
     let rol = req.body.user.rol
@@ -12,8 +11,4 @@ const validateRol = async (req , res,  next ) => {
         return res.status(404).json({msg : "Not authorized"})
     
     next();
-}
-
-module.exports = {
-validateRol
 }

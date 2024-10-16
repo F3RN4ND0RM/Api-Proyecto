@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const  db = new Sequelize(process.env.DBURL, {
     dialect: 'postgres',
@@ -13,4 +13,4 @@ const  db = new Sequelize(process.env.DBURL, {
     "timezone" : '-12:00'
 })
 
-module.exports = db
+export default db

@@ -1,12 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const {check} = require ("express-validator");
-const {getCasos, postCaso, deleteCaso, updateCaso} = require("../controller/casos.controller")
-const {validateCasos} = require("../middlewares/validate-casos");
-const {validateForm } = require('../middlewares/validate-form');
-const {validateRol} = require("../middlewares/validate-rol")
-const { NUMBER } = require('sequelize');
-const { validateToken } = require('../middlewares/validate-jwt');
+
+import { Router } from 'express';
+import { check } from 'express-validator';
+import { getCasos, postCaso, deleteCaso, updateCaso } from '../controller/casos.controller.js';
+import { validateCasos } from '../middlewares/validate-casos.js';
+import { validateForm } from '../middlewares/validate-form.js';
+import { validateRol } from '../middlewares/validate-rol.js';
+import { validateToken } from '../middlewares/validate-jwt.js';
+
+const router = Router();
+
 
 
 router.get('/casos',
@@ -52,4 +54,4 @@ router.delete('/casos/:id',
 
 
 
-module.exports = router
+export default router;

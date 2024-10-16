@@ -1,5 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../db/db');
+import { DataTypes } from 'sequelize';
+import sequelize from '../db/db.js';
+
 
 
 const Citas = sequelize.define('Citas', {
@@ -35,4 +36,5 @@ const Citas = sequelize.define('Citas', {
 )
 
 
-module.exports=Citas
+
+export default Citas;

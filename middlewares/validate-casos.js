@@ -1,8 +1,7 @@
-const { user } = require('pg/lib/defaults')
-const User = require('../models/user.model')
+import User from '../models/user.model.js';
 
 
-const validateCasos = async (req , res,  next ) => {
+export const validateCasos = async (req , res,  next ) => {
 
     try{
         
@@ -29,6 +28,3 @@ const validateCasos = async (req , res,  next ) => {
     }
 }
 
-module.exports = {
-    validateCasos
-}

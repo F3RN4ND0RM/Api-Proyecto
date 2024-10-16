@@ -1,12 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const {check} = require ("express-validator");
-const {getCitas, postCitas, deleteCitas} = require("../controller/citas.controller")
-const {validateCitas} = require("../middlewares/validate-citas");
-const {validateForm } = require('../middlewares/validate-form');
-const {validateRol} = require("../middlewares/validate-rol")
-const { NUMBER } = require('sequelize');
-const { validateToken } = require('../middlewares/validate-jwt');
+import express from 'express';
+import { Router } from 'express';
+import { check } from 'express-validator';
+import { getCitas, postCitas, deleteCitas } from '../controller/citas.controller.js';
+import { validateCitas } from '../middlewares/validate-citas.js';
+import { validateForm } from '../middlewares/validate-form.js';
+import { validateRol } from '../middlewares/validate-rol.js';
+import { NUMBER } from 'sequelize';
+import { validateToken } from '../middlewares/validate-jwt.js';
+
+const router = Router();
 
 
 router.get('/citas',
@@ -30,4 +32,4 @@ router.delete('/citas/:id',
     deleteCitas
 )
 
-module.exports = router
+export default router;

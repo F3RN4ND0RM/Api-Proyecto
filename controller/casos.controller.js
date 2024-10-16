@@ -1,15 +1,13 @@
+import { Op } from 'sequelize';
+import Caso from '../models/casos.model.js';
 
-const { body } = require("express-validator");
 
-const { Op} = require('sequelize');
-const Caso = require("../models/casos.model");
-
-exports.getCasos = async (req, res) => {
+export const getCasos = async (req, res) => {
 
     
     try{
 
-        id = req.body.user.id
+        let id = req.body.user.id
 
         const casos = await Caso.findAll({
             where : {
@@ -31,7 +29,7 @@ exports.getCasos = async (req, res) => {
 }
 
 
-exports.postCaso = async (req, res) => {
+export const postCaso = async (req, res) => {
     try{
 
 
@@ -56,7 +54,7 @@ exports.postCaso = async (req, res) => {
 
 
 
-exports.updateCaso = async (req, res) => {
+export const updateCaso = async (req, res) => {
     try{
         
 
@@ -68,7 +66,7 @@ exports.updateCaso = async (req, res) => {
         
 
 
-        caso = await Caso.findByPk(id, {
+        let caso = await Caso.findByPk(id, {
             where : {
                 [Op.or] : [ {id_cliente : id_user}, {id_abogado : id_user}]
             }
@@ -91,7 +89,7 @@ exports.updateCaso = async (req, res) => {
 
 
 
-exports.deleteCaso = async (req, res) => {
+export const deleteCaso = async (req, res) => {
     try{
 
         const id_user =  req.body.user.id
@@ -99,7 +97,7 @@ exports.deleteCaso = async (req, res) => {
         
 
 
-        caso = await Caso.findByPk(id, {
+        let caso = await Caso.findByPk(id, {
             where : {
                 [Op.or] : [ {id_cliente : id_user}, {id_abogado : id_user}]
             }

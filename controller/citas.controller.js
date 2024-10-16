@@ -1,13 +1,13 @@
-const Citas = require("../models/citas.model")
-const { body } = require("express-validator");
+import Citas from '../models/citas.model.js';
+import { body } from 'express-validator';
+import { Op } from 'sequelize';
 
-const { Op} = require('sequelize')
 
-exports.getCitas = async (req, res) => {
+export const getCitas = async (req, res) => {
     try{
 
 
-        id = req.body.user.id
+        let id = req.body.user.id
 
         const citas = await Citas.findAll({
             where : {
@@ -29,7 +29,7 @@ exports.getCitas = async (req, res) => {
 }
 
 
-exports.postCitas = async (req, res) => {
+export const postCitas = async (req, res) => {
     try{
 
 
@@ -52,7 +52,7 @@ exports.postCitas = async (req, res) => {
 }
 
 
-exports.deleteCitas = async (req, res) => {
+export const deleteCitas = async (req, res) => {
     try{
 
         const id_user =  req.body.user.id
@@ -60,7 +60,7 @@ exports.deleteCitas = async (req, res) => {
         
 
 
-        cita = await Citas.findByPk(id, {
+        let cita = await Citas.findByPk(id, {
             where : {
                 [Op.or] : [ {id_cliente : id}, {id_abogado : id}]
             }

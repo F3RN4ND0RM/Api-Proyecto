@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const {check} = require ("express-validator");
-const {validateEmail, validateAUP} = require('../middlewares/validate-userForm')
-const {getUsers, postUsers, loginUser, updateUser, updateRol, getUserByID} = require('../controller/user.controller');
-const { validateForm } = require('../middlewares/validate-form');
-const {validateToken} = require('../middlewares/validate-jwt')
-const {validateRol} = require("../middlewares/validate-rol")
+import express from 'express';
+import { check } from 'express-validator';
+import { validateEmail, validateAUP } from '../middlewares/validate-userForm.js';
+import { getUsers, getUserByID, postUsers, loginUser, updateUser, updateRol } from '../controller/user.controller.js';
+import { validateForm } from '../middlewares/validate-form.js';
+import { validateToken } from '../middlewares/validate-jwt.js';
+import { validateRol } from '../middlewares/validate-rol.js';
 
+const router = express.Router();
 
 router.get('/users',
     [validateToken, validateRol], 
@@ -63,4 +63,4 @@ router.post('/login',[
     validateForm
     ], loginUser)
 
-module.exports = router
+export default router;

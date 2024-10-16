@@ -1,10 +1,9 @@
 
-const { Request, Response} = require('express')
-const { validationResult } = require('express-validator');
+import { validationResult } from 'express-validator';
 
 
 
-const validateForm = (req , res,  next ) => {
+export  const validateForm = (req , res,  next ) => {
 
     const errors = validationResult(req);
 
@@ -15,6 +14,3 @@ const validateForm = (req , res,  next ) => {
     next();
 }
 
-module.exports = {
-    validateForm
-}

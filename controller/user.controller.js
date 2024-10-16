@@ -1,13 +1,10 @@
-const User = require("../models/user.model");
-const { body } = require("express-validator");
-const bcrypt = require('bcrypt');
-const jwt = require("jsonwebtoken");
-const { use } = require("bcrypt/promises");
-const { password, user } = require("pg/lib/defaults");
-const { where } = require("sequelize");
+import User from '../models/user.model.js';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 
-exports.getUsers = async (req, res) => {
+
+export const getUsers = async (req, res) => {
     try{
 
         const users = await User.findAll({
@@ -28,17 +25,13 @@ exports.getUsers = async (req, res) => {
 
 
 
-exports.getUserByID = async (req, res) => {
+export const getUserByID = async (req, res) => {
     try{
 
         let id = req.body.user.id
 
-        let user = await User.findOne({            
+        let user = await User.findByPk(id, {            
             attributes: ['id','name', 'surname', 'gender', 'email', 'address', 'neighborhood', 'city', 'state', 'cp', 'phone'],            
-        },{
-            where :{
-                id
-            }
         })
 
 
@@ -54,7 +47,7 @@ exports.getUserByID = async (req, res) => {
     }
 }
 
-exports.postUsers = async (req, res) => {
+export const postUsers = async (req, res) => {
 
     let user = req.body
 
@@ -74,7 +67,7 @@ exports.postUsers = async (req, res) => {
 }
 
 
-exports.loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
 
     try{
 
@@ -89,7 +82,7 @@ exports.loginUser = async (req, res) => {
         if(!user)
             return res.status(404).json({msg : "wrong user or password"})
                            
-        validPassword = await bcrypt.compare(password, user.password)
+        const validPassword = await bcrypt.compare(password, user.password)
 
         if(!validPassword)
             return res.status(404).json({msg : "wrong user or password"})
@@ -113,14 +106,14 @@ exports.loginUser = async (req, res) => {
 
 
 
-exports.updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
 
     try{
 
         let {name, surname, email, password, address, neighborhood, city, state, cp, gender, phone} = req.body
 
-        id = req.body.user.id
-        user = await User.findByPk(id)
+        let id = req.body.user.id
+        let user = await User.findByPk(id)
 
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
@@ -156,7 +149,7 @@ exports.updateUser = async (req, res) => {
 }
 
 
-exports.updateRol = async (req, res) => {
+export const updateRol = async (req, res) => {
 
     try{
 
@@ -185,4 +178,3 @@ exports.updateRol = async (req, res) => {
         return res.status(400).json({msg: error})
     }
 }
-
