@@ -9,6 +9,7 @@ export const getUsers = async (req, res) => {
 
         const users = await User.findAll({
             attributes: ['id', 'name', 'surname', 'rol'],
+            order: [['id', 'ASC']] // Ordena por id en orden ascendente
         })
 
 
