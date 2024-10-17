@@ -10,9 +10,7 @@ export const getDocumentos = async (req, res) => {
     const payload = {
         "search_query": busqueda,
         "documents": [
-          "https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/5cd7d646-8b32-11ef-b357-02420a00014c/CPEUM.pdf",
-          "https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/e0e642ba-8c1d-11ef-a9aa-02420a000149/transito.pdf"
-        ]
+          "https://storage.googleapis.com/dara-c1b52.appspot.com/daras_ai/media/5cd7d646-8b32-11ef-b357-02420a00014c/CPEUM.pdf"        ]
       };
       
     const response = await fetch("https://api.gooey.ai/v2/doc-search", {
